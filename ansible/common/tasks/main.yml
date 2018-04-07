@@ -1,0 +1,27 @@
+---
+# tasks file for common
+- name: updating repositories
+  apt: name="{{ item }}"  state=latest
+  with_items:
+    -  curl
+    -  apt-transport-https
+    -  software-properties-common
+
+- name: Downloading gpg key for php repo
+  get_url: url=https://packages.sury.org/php/apt.gpg dest=./apt.gpg
+
+- name: Installing gpg key
+  command: apt-key add apt.gpg
+
+- name: Creating a repo file for php5.6
+  file: path="/etc/apt/sources.list.d/php5.list" state=touch
+
+- name: Adding php5.6 source
+  template: src="source.j2" dest="/etc/apt/sources.list.d/php5.list"
+
+
+- name: Cleaning apt cache
+  shell: apt-get clean
+
+- name: Updating pachages
+  shell: apt-get update

@@ -1,0 +1,12 @@
+---
+# tasks file for php
+- name: installing php5.6 and modules
+  apt: name={{ item }} state=installed
+  with_items:
+     - php5.6
+     - php5.6-mysql
+     - php5.6-cli
+     - php5.6-mbstring 
+     - php5.6-mbstring 
+     - php5.6-gettext 
+  notify: restart apache2 

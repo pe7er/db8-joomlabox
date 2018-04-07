@@ -1,0 +1,9 @@
+---
+# tasks file for joomla
+- name: Add Akeeba Kickstart to site
+  copy:
+    src: kickstart.php
+    dest: /var/www/html/
+
+- name: Move index.html
+  command: creates="/var/www/html/index.old" mv /var/www/html/index.html /var/www/html/index.old
