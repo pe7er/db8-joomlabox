@@ -7,6 +7,6 @@
      - php5.6-mysql
      - php5.6-cli
      - php5.6-mbstring 
-     - php5.6-mbstring 
-     - php5.6-gettext 
+     - php5.6-gettext
+     - php5.6-xml
   notify: restart apache2 
